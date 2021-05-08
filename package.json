@@ -1,0 +1,20 @@
+{
+  "name": "recruitment_information_chatbot",
+  "version": "1.0.0",
+  "description": "오픈소스 프로그램 프로젝트 과제",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://khuhub.khu.ac.kr/2017103961/Recruitment_Information_chatbot.git"
+  },
+  "author": "김대선",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "puppeteer": "^9.1.1"
+  }
+}
