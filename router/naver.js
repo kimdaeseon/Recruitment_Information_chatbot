@@ -39,11 +39,7 @@ const makeObject = (array)=>{
     return result
 }
 
-router.get('/', (req, res, error)=>{
-    res.send("naver home")
-})
-
-router.get('/recruitment', async (req, res, error)=>{
+const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
@@ -57,7 +53,7 @@ router.get('/recruitment', async (req, res, error)=>{
             await page.click('#moreDiv > button').catch((error)=>{
                 
             })
-            await page.waitForTimeout(300)
+            await page.waitForTimeout(200)
             content = await page.content()
         }
     }
@@ -73,7 +69,15 @@ router.get('/recruitment', async (req, res, error)=>{
     resArr = result.split('</li><li>')
     result = makeObject(resArr)
     console.log(result)
-    res.send(result)
+    return result;
+}
+
+router.get('/', (req, res, error)=>{
+    res.send("naver home")
+})
+
+router.get('/recruitment', async (req, res, error)=>{
+    res.send(await getData())
 })
 
 
