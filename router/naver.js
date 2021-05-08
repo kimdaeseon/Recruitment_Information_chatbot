@@ -6,15 +6,36 @@ const cheerio = require('cheerio')
 const sanitizeHtml =require('sanitize-html')
 
 const splitData = (string)=>{
-    return string.replace(/(<([^>]+)>)*(\\t)?/gi, "").split("\t").filter((ele)=> ele != '')
+    const temp = /(<a([^>]+)>)/g.exec(string)
+    const temp2 = temp[0].split('"');
+    url = "https://recruit.navercorp.com" + temp2[1];
+    result = string.replace(/(<([^>]+)>)*(\\t)?/gi, "").split("\t").filter((ele)=> ele != '')
+    result.pop()
+    result.push(url)
+    return result;
 }
 
 const makeObject = (array)=>{
-    const result = [];
+    const result = []
+    let tempData = null
     for(let i of array){
-        result.push(splitData(i))
+        tempData = splitData(i)
+        if(tempData.length == 5){
+            result.push({
+                title : tempData[0],
+                term : tempData[2],
+                tags : tempData[3].split('#').filter((ele)=>ele != ''),
+                url : tempData[4]
+            })
+        }
+        else if (tempData.length == 4){
+            result.push({
+                title : tempData[0],
+                term : tempData[2],
+                url : tempData[3]
+            })
+        }
     }
-
     return result
 }
 
