@@ -1,11 +1,14 @@
 const express = require('express')
-const puppeteer = require('puppeteer')
+
+const naverRouter = require('./router/naver.js')
+
 
 const naverRouter = require('./router/naver')
 const kakaoRouter = require('./router/kakao')
 
 
 const app = express();
+
 const server = app.listen(3000,()=>{
     const host = server.address().address
     const port = server.address().port
