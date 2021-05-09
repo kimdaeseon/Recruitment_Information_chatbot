@@ -1,8 +1,5 @@
 const express = require('express')
 
-const naverRouter = require('./router/naver.js')
-
-
 const naverRouter = require('./router/naver')
 const kakaoRouter = require('./router/kakao')
 const programmersRouter = require('./router/programmers')
