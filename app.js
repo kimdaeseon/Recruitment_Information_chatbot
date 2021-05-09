@@ -5,7 +5,7 @@ const naverRouter = require('./router/naver.js')
 
 const naverRouter = require('./router/naver')
 const kakaoRouter = require('./router/kakao')
-
+const programmersRouter = require('./router/programmers')
 
 const app = express();
 
@@ -17,6 +17,7 @@ const server = app.listen(3000,()=>{
 
 app.use('/naver', naverRouter)
 app.use('/kakao', kakaoRouter)
+app.use('/programmers', programmersRouter)
 
 app.get('/', (req, res)=>{
     res.send("this is home!")
