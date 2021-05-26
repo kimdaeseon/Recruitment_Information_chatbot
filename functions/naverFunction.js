@@ -20,7 +20,6 @@ const makeObject = (array)=>{
         if(tempData.length == 5){
             result.push({
                 title : tempData[0],
-                term : tempData[2],
                 tags : tempData[3].split('#').filter((ele)=>ele != ''),
                 url : tempData[4]
             })
@@ -28,7 +27,6 @@ const makeObject = (array)=>{
         else if (tempData.length == 4){
             result.push({
                 title : tempData[0],
-                term : tempData[2],
                 url : tempData[3]
             })
         }

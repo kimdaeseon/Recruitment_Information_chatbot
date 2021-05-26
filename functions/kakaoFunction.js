@@ -19,7 +19,6 @@ const makeObject = (array)=>{
         tempData = splitData(i)
         result.push({
             title : tempData[0],
-            term : tempData[2],
             tags : [],
             url : tempData[tempData.length - 1]
         })
@@ -33,10 +32,10 @@ const makeObject = (array)=>{
 }
 
 const moveNextPage = async (page)=>{
-
-    await page.click('#mArticle > div > div.paging_list > span > a:nth-child(11) > span > span').catch((error)=>{
+    
+    await page.click('#mArticle > div > div.paging_list > span > a:nth-child(10) > span > span').catch((error)=>{
     })
-    await page.waitForTimeout(300)
+    await page.waitForTimeout(1000)
     return await page.content()
 }
 

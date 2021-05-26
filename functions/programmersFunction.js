@@ -19,7 +19,6 @@ const makeObject = (array)=>{
         tempData = splitData(i)
         result.push({
             title : tempData[0],
-            term : tempData[2],
             tags : [],
             url : tempData[tempData.length - 1]
         })
@@ -77,8 +76,7 @@ const getData = async ()=>{
     return result
 }
 
-getData()
 
 module.exports = {
-
+    getData : getData
 }
