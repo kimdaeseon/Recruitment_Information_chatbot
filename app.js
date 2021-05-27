@@ -83,7 +83,7 @@ const save = async()=> {
         save()
     }
 }
-
+// 0초 0분 0시 아무날 아무달 아무년
 const saveData = schedule.scheduleJob('0 0 0 * * *', save)
 
 const server = app.listen(3000,()=>{
