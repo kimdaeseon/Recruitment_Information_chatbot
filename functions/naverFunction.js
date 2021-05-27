@@ -27,7 +27,8 @@ const makeObject = (array)=>{
         else if (tempData.length == 4){
             result.push({
                 title : tempData[0],
-                url : tempData[3]
+                url : tempData[3],
+                tags : []
             })
         }
     }
