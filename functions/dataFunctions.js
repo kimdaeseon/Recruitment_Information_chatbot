@@ -19,10 +19,10 @@ const read = async () =>{
             tags = stringArray[i].replace("tags : ", "").split(",")
         }
         else if( i % 4 == 2){
-            tags = stringArray[i].replace("url : ", "")
+            url = stringArray[i].replace("url : ", "")
         }
         else if ( i % 4 == 3){
-            companyName = stringArray[i].replace("company : ", "")
+            companyName = stringArray[i].replace("companyName : ", "")
             data.push({
                 title : title,
                 tags : tags,
@@ -31,7 +31,7 @@ const read = async () =>{
             })
         }
     }
-    console.log(data)
+    return data
 }
 
 const save = async()=> {

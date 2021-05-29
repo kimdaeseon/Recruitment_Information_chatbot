@@ -19,6 +19,6 @@ const server = app.listen(3000,()=>{
 
 app.get('/', async (req, res)=>{
 
-
-    res.send("hello world")
+    data = await dataFunctions.read()
+    res.send(data)
 })
