@@ -21,14 +21,16 @@ const makeObject = (array)=>{
             result.push({
                 title : tempData[0],
                 tags : tempData[3].split('#').filter((ele)=>ele != ''),
-                url : tempData[4]
+                url : tempData[4],
+                companyName : "naver"
             })
         }
         else if (tempData.length == 4){
             result.push({
                 title : tempData[0],
                 url : tempData[3],
-                tags : []
+                tags : [],
+                companyName : "naver"
             })
         }
     }
@@ -64,7 +66,6 @@ const getData = async ()=>{
     })
     resArr = result.split('</li><li>')
     result = makeObject(resArr)
-    console.log(result)
     return result;
 }
 

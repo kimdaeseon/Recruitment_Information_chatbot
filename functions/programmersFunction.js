@@ -20,7 +20,8 @@ const makeObject = (array)=>{
         result.push({
             title : tempData[0],
             tags : [],
-            url : tempData[tempData.length - 1]
+            url : tempData[tempData.length - 1],
+            companyName : tempData[1]
         })
         for(let j = 6; j < tempData.length - 1; j++){
             result[result.length -1].tags.push(tempData[j])
@@ -72,7 +73,6 @@ const getData = async ()=>{
         temp = content
         content = await moveNextPage(page)
     }
-    console.log(result)
     return result
 }
 
@@ -80,3 +80,5 @@ const getData = async ()=>{
 module.exports = {
     getData : getData
 }
+
+getData()

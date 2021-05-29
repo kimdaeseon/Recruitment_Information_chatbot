@@ -20,7 +20,8 @@ const makeObject = (array)=>{
         result.push({
             title : tempData[0],
             tags : [],
-            url : tempData[tempData.length - 1]
+            url : tempData[tempData.length - 1],
+            companyName : "kakao"
         })
         for(let j of tempData){
             if(j[0] == '#'){
@@ -50,7 +51,6 @@ const getData = async ()=>{
     let content = await page.content()
     while(true){
         if(temp == content){
-            console.log("finish", result.length)
             break;
         }
         let $ = cheerio.load(content, {decodeEntities: true})
@@ -68,7 +68,6 @@ const getData = async ()=>{
         temp = content
         content = await moveNextPage(page)
     }
-    console.log(result)
     return result
 }
 
