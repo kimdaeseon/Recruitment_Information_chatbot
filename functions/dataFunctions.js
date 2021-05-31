@@ -78,12 +78,14 @@ const save = async()=> {
         const today = new Date()
         fs.writeFile(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()}`, string, 'utf-8', (err)=>{
             if(err){
+                console.log("파일저장시에 오류")
                 console.log(err)
                 save()
             }
             else console.log("저장완료!")
         })
     } catch (error) {
+        console.log("데이터 가져오는 과정에서 오류")
         console.log(error)
         save()
     }

@@ -4,12 +4,18 @@ const sanitizeHtml =require('sanitize-html')
 
 const splitData = (string)=>{
     const temp = /(<a([^>]+)>)/g.exec(string)
-    const temp2 = temp[0].split('"');
-    url = "https://programmers.co.kr/job" + temp2[1];
-    result = string.replace(/(<([^>]+)>)*(\\t)?/gi, "").replace(/ /g, "").split("\n").filter((ele)=> ele != '')
-    result.pop()
-    result.push(url)
-    return result;
+    try {
+        const temp2 = temp[0].split('"');
+        url = "https://programmers.co.kr/job" + temp2[1];
+        result = string.replace(/(<([^>]+)>)*(\\t)?/gi, "").replace(/ /g, "").split("\n").filter((ele)=> ele != '')
+        result.pop()
+        result.push(url)
+        return result;
+    } catch (error) {
+        console.log(temp)
+        console.log(string)
+    }
+
 }
 
 const makeObject = (array)=>{
@@ -17,6 +23,10 @@ const makeObject = (array)=>{
     let tempData = null
     for(let i of array){
         tempData = splitData(i)
+        if(!tempData){
+            console.log("error")
+            continue
+        }
         result.push({
             title : tempData[0],
             tags : [],
@@ -30,29 +40,31 @@ const makeObject = (array)=>{
     return result
 }
 
-const moveNextPage = async (page)=>{
-
-    await page.click('#paginate > nav > ul > li.next.next_page.page-item > a').catch((error)=>{
-    })
-    await page.waitForTimeout(300)
-    return await page.content()
-}
-
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
     let result = []
     let temp = ""
-
+    let count = 1;
     await page.goto('https://programmers.co.kr/job')
+    let selector = '#paginate > nav > ul > li:nth-child(8) > a'
     let content = await page.content()
+    let $ = cheerio.load(content, {decodeEntities: true})
+    const final = sanitizeHtml($(selector), {
+        parser : {
+            decodeEntities : true
+        }
+    }).replace(/(<([^>]+)>)*(\\t)?/gi, "")
+    console.log(final)
     while(true){
-        if(temp == content){
+        await page.goto(`https://programmers.co.kr/job?page=${count}`)
+        content = await page.content()
+        if(final < count){
             console.log("finish", result.length)
             break;
         }
-        let $ = cheerio.load(content, {decodeEntities: true})
+        $ = cheerio.load(content, {decodeEntities: true})
     
         let item = ""
         let resArr =[]
@@ -63,22 +75,21 @@ const getData = async ()=>{
                     decodeEntities: true
                 }
             })
-            if(item =='') break;
+            if(item ==''){
+                console.log("break!!!!")
+                break;
+            } 
             item = item.split("</div>`")
             resArr.push(item[0])
             
         }
         result = result.concat(await makeObject(resArr))
+        count = count + 1
         resArr = []
-        temp = content
-        content = await moveNextPage(page)
     }
     return result
 }
 
-
 module.exports = {
     getData : getData
 }
-
-getData()
