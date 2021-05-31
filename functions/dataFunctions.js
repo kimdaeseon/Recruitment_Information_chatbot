@@ -1,7 +1,7 @@
 const fs = require('fs')
 const functions = require('./function')
 
-const read = async () =>{
+const read = () =>{
     const data = []
     let title = ""
     let tags = []
