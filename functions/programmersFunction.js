@@ -43,7 +43,8 @@ const makeObject = (array)=>{
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-
+    page.setDefaultNavigationTimeout(0)
+    
     let result = []
     let temp = ""
     let count = 1;

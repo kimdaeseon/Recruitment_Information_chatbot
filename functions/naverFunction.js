@@ -40,6 +40,7 @@ const makeObject = (array)=>{
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(0)
 
     await page.goto('https://recruit.navercorp.com/naver/job/list/developer')
     let content = await page.content()
@@ -66,6 +67,7 @@ const getData = async ()=>{
     })
     resArr = result.split('</li><li>')
     result = makeObject(resArr)
+    console.log("naver : ", result.length)
     return result;
 }
 
