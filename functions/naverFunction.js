@@ -52,7 +52,7 @@ const getData = async ()=>{
             await page.click('#moreDiv > button').catch((error)=>{
                 
             })
-            await page.waitForTimeout(200)
+            await page.waitForTimeout(1500)
             content = await page.content()
         }
     }

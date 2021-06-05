@@ -15,7 +15,7 @@ const data = require('./functions/dataFunctions')
 const find = require('./functions/findFunction')
 
 // 0초 0분 0시 아무날 아무달 아무년
-const saveData = schedule.scheduleJob('55 54 18 * * *', data.save)
+const saveData = schedule.scheduleJob('55 49 19 * * *', data.save)
 
 var app = express();
 app.use(bodyParser.json());
