@@ -49,7 +49,6 @@ const save = async()=> {
             temp = "companyName : " + i.companyName
             string = string + temp + "\n"
         }
-
         data = await functions.getNaverFunction()
         temp = ""
         for(let i of data){
@@ -62,7 +61,7 @@ const save = async()=> {
             temp = "companyName : " + i.companyName
             string = string + temp + "\n"
         }
-
+        
         data = await functions.getProgrammersFunction()
         temp = ""
         for(let i of data){
@@ -75,6 +74,7 @@ const save = async()=> {
             temp = "companyName : " + i.companyName
             string = string + temp + "\n"
         }
+
         const today = new Date()
         fs.writeFile(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()}`, string, 'utf-8', (err)=>{
             if(err){
