@@ -61,6 +61,7 @@ const getData = async ()=>{
     while(true){
         await page.goto(`https://programmers.co.kr/job?page=${count}`)
         content = await page.content()
+        console.log( final, count)
         if(final < count){
             console.log("finish", result.length)
             break;
@@ -86,8 +87,8 @@ const getData = async ()=>{
         }
         result = result.concat(await makeObject(resArr))
         count = count + 1
-        resArr = []
     }
+    console.log(result)
     return result
 }
 
