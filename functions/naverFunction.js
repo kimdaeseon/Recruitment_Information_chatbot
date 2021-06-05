@@ -44,16 +44,21 @@ const getData = async ()=>{
 
     await page.goto('https://recruit.navercorp.com/naver/job/list/developer')
     let content = await page.content()
-    let temp = null;
-    while(true){
-        if (temp == content) break;
+    let temp = "";
+    let Flag = true
+    while(Flag){
+        if (temp == content){
+            Flag = false
+            break;
+        }
         else{
-            temp = await page.content()
+            temp = content
             await page.click('#moreDiv > button').catch((error)=>{
-                
+                Flag = false
             })
             await page.waitForTimeout(1500)
             content = await page.content()
+            
         }
     }
     let $ = cheerio.load(content, {decodeEntities: true})
@@ -74,3 +79,5 @@ const getData = async ()=>{
 module.exports = {
     getData : getData
 }
+
+getData()
