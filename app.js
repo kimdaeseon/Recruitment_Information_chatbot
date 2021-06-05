@@ -1,11 +1,11 @@
 var express = require('express');
 const request = require('request');
 const TARGET_URL = 'https://api.line.me/v2/bot/message/reply'
-const TOKEN = require('config').TOKEN
+const TOKEN = require('./config').TOKEN
 const fs = require('fs');
 const path = require('path');
 const HTTPS = require('https');
-const domain = require('config').domain
+const domain = require('./config').domain
 const sslport = 23023;
 const bodyParser = require('body-parser');
 

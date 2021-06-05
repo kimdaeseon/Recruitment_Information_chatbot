@@ -18,6 +18,8 @@
     "express": "^4.17.1",
     "node-schedule": "^2.0.0",
     "puppeteer": "^9.1.1",
-    "sanitize-html": "^2.3.3"
+    "sanitize-html": "^2.3.3",
+    "body-parser": "^1.19.0",
+    "request": "^2.88.2"
   }
 }
