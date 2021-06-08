@@ -7,8 +7,31 @@ const read = () =>{
     let tags = []
     let url = ""
     let companyName = ""
+    // const today = new Date()
     const today = new Date()
-    const string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()}`, 'utf-8', 'r')
+    let string
+    try {
+        string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()}`, 'utf-8', 'r')
+    } catch (error) {
+        if(today.getDate()-1 == 0){
+            if([1, 3, 5, 7, 8, 10, 12].includes(today.getMonth() - 1)){
+                string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth() - 1}.${31}`, 'utf-8', 'r')
+            }
+            else if([4, 6, 9, 11].includes(today.getMonth() - 1)){
+                string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${30}`, 'utf-8', 'r')
+            }
+            else if (2 == today.getMonth() - 1){
+                string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${28}`, 'utf-8', 'r')
+            }
+            else if (0 == today.getMonth() - 1){
+                string = fs.readFileSync(`./datas/${today.getFullYear() - 1}.${12}.${31}`, 'utf-8', 'r')
+            }
+        }
+        else{
+            string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()-1}`, 'utf-8', 'r')
+        }
+    }
+    return string
     const stringArray = string.split('\n')
     const size = stringArray.length
     for(let i = 0 ; i < size; i++){
