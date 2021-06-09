@@ -136,13 +136,13 @@ puppeteer에서 오류가 발생하면 다음과 같이 하면된다.
 5. 다른 키워드로 검색을 하고 싶다면, 새로운 키워드를 입력하고 사용 방법 2번 부터 다시 진행합니다.
 
 키워드 입력
-![키워드 입력](https://kimdaeseon-oss.s3.amazonaws.com/%ED%82%A4%EC%9B%8C%EB%93%9C+%EC%9E%85%EB%A0%A5.PNG){: width="25%" height="25%"}
+![키워드 입력](https://kimdaeseon-oss.s3.amazonaws.com/%ED%82%A4%EC%9B%8C%EB%93%9C+%EC%9E%85%EB%A0%A5.PNG)
 선택지 
-![기능 노출](https://kimdaeseon-oss.s3.amazonaws.com/%EA%B8%B0%EB%8A%A5+%EB%85%B8%EC%B6%9C.PNG){: width="25%" height="25%"}
+![기능 노출](https://kimdaeseon-oss.s3.amazonaws.com/%EA%B8%B0%EB%8A%A5+%EB%85%B8%EC%B6%9C.PNG)
 결과
-![선택결과](https://kimdaeseon-oss.s3.amazonaws.com/%EC%84%A0%ED%83%9D+%EA%B2%B0%EA%B3%BC.PNG){: width="25%" height="25%"}
+![선택결과](https://kimdaeseon-oss.s3.amazonaws.com/%EC%84%A0%ED%83%9D+%EA%B2%B0%EA%B3%BC.PNG)
 결과가 없을 때
-![결과 없음](https://kimdaeseon-oss.s3.amazonaws.com/%EA%B2%B0%EA%B3%BC+%EC%97%86%EC%9D%8C.PNG){: width="25%" height="25%"}
+![결과 없음](https://kimdaeseon-oss.s3.amazonaws.com/%EA%B2%B0%EA%B3%BC+%EC%97%86%EC%9D%8C.PNG)
 
    
 
