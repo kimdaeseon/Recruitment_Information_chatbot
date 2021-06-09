@@ -150,7 +150,7 @@ app.post('/hook', function (req, res) {
                                     "action": {
                                         "type":"postback",
                                         "label":"다음 보기",
-                                        "data": postbackData[0] + " " + finish + " " + postbackData[2]
+                                        "data": postbackData[0] + "|||" + finish + "|||" + postbackData[2]
                                     },
                                     "style": "primary",
                                     "color": "#fbc2eb"
