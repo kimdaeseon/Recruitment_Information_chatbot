@@ -32,24 +32,19 @@ const makeObject = (array)=>{
     return result
 }
 
-const moveNextPage = async (page)=>{
-    
-    await page.click('#mArticle > div > div.paging_list > span > a:nth-child(10) > span > span').catch((error)=>{
-    })
-    await page.waitForTimeout(1000)
-    return await page.content()
-}
-
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(0)
 
     let result = []
     let temp = ""
-
+    let count = 1
     await page.goto('https://careers.kakao.com/jobs')
-    let content = await page.content()
+    let content = ""
     while(true){
+        await page.goto(`https://careers.kakao.com/jobs?page=${count}`)
+        content = await page.content()
         if(temp == content){
             break;
         }
@@ -66,12 +61,12 @@ const getData = async ()=>{
         resArr.pop()
         result = result.concat(await makeObject(resArr))
         temp = content
-        content = await moveNextPage(page)
+        count = count + 1
     }
+    console.log("kakao : ", result.length)
     return result
 }
 
 module.exports = {
     getData : getData
 }
-

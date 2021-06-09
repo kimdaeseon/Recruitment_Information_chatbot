@@ -40,19 +40,25 @@ const makeObject = (array)=>{
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
+    page.setDefaultNavigationTimeout(0)
 
     await page.goto('https://recruit.navercorp.com/naver/job/list/developer')
     let content = await page.content()
-    let temp = null;
-    while(true){
-        if (temp == content) break;
+    let temp = "";
+    let Flag = true
+    while(Flag){
+        if (temp == content){
+            Flag = false
+            break;
+        }
         else{
-            temp = await page.content()
+            temp = content
             await page.click('#moreDiv > button').catch((error)=>{
-                
+                Flag = false
             })
-            await page.waitForTimeout(200)
+            await page.waitForTimeout(2000)
             content = await page.content()
+            
         }
     }
     let $ = cheerio.load(content, {decodeEntities: true})
@@ -66,6 +72,7 @@ const getData = async ()=>{
     })
     resArr = result.split('</li><li>')
     result = makeObject(resArr)
+    console.log("naver : ", result.length)
     return result;
 }
 

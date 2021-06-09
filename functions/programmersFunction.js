@@ -43,7 +43,8 @@ const makeObject = (array)=>{
 const getData = async ()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-
+    page.setDefaultNavigationTimeout(0)
+    
     let result = []
     let temp = ""
     let count = 1;
@@ -56,12 +57,10 @@ const getData = async ()=>{
             decodeEntities : true
         }
     }).replace(/(<([^>]+)>)*(\\t)?/gi, "")
-    console.log(final)
     while(true){
         await page.goto(`https://programmers.co.kr/job?page=${count}`)
         content = await page.content()
         if(final < count){
-            console.log("finish", result.length)
             break;
         }
         $ = cheerio.load(content, {decodeEntities: true})
@@ -76,7 +75,6 @@ const getData = async ()=>{
                 }
             })
             if(item ==''){
-                console.log("break!!!!")
                 break;
             } 
             item = item.split("</div>`")
@@ -85,8 +83,8 @@ const getData = async ()=>{
         }
         result = result.concat(await makeObject(resArr))
         count = count + 1
-        resArr = []
     }
+    console.log("kakao : ", result.length)
     return result
 }
 

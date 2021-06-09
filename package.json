@@ -14,10 +14,13 @@
   "author": "김대선",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.9",
     "express": "^4.17.1",
     "node-schedule": "^2.0.0",
     "puppeteer": "^9.1.1",
+    "puppeteer-core": "^10.0.0",
+    "request": "^2.88.2",
     "sanitize-html": "^2.3.3"
   }
 }
