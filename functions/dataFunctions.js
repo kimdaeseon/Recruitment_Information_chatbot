@@ -94,7 +94,6 @@ const read = () =>{
             string = fs.readFileSync(`./datas/${today.getFullYear()}.${today.getMonth()}.${today.getDate()-1}`, 'utf-8', 'r')
         }
     }
-    return string
     const stringArray = string.split('\n')
     const size = stringArray.length
     for(let i = 0 ; i < size; i++){
