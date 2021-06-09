@@ -36,10 +36,6 @@ const save = async()=> {
             temp = "companyName : " + i.companyName
             string = string + temp + "\n"
         }
-<<<<<<< HEAD
-        
-=======
->>>>>>> 694647de3d94a82e2485ce202270c0702aaed6f7
         data = await functions.getProgrammersFunction()
         temp = ""
         for(let i of data){
